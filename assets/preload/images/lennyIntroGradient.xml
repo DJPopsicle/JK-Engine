@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="lennyIntroGradient.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Lenny Intro Gradient0000" x="0" y="0" width="1471" height="1186" pivotX="757.75" pivotY="695.1" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0001" x="1471" y="0" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0002" x="2942" y="0" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0003" x="4413" y="0" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0004" x="5884" y="0" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0005" x="0" y="1186" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0006" x="1471" y="1186" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0007" x="2942" y="1186" width="1524" height="1160" frameX="-72" frameY="-97" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0008" x="4466" y="1186" width="1620" height="1099" frameX="-24" frameY="-127" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0009" x="6086" y="1186" width="1668" height="1069" frameX="0" frameY="-142" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0010" x="0" y="2372" width="1650" height="1081" frameX="-9" frameY="-136" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0011" x="1650" y="2372" width="1602" height="1111" frameX="-33" frameY="-121" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0012" x="3252" y="2372" width="1542" height="1148" frameX="-63" frameY="-103" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0013" x="4794" y="2372" width="1494" height="1179" frameX="-87" frameY="-87" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0014" x="6288" y="2372" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0015" x="0" y="3558" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0016" x="1471" y="3558" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0017" x="2942" y="3558" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+	<SubTexture name="Lenny Intro Gradient0018" x="4413" y="3558" width="1471" height="1186" frameX="-97" frameY="-82" frameWidth="1668" frameHeight="1353"/>
+</TextureAtlas>

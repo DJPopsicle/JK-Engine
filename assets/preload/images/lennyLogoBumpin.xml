@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="lennyLogoBumpin.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Lenny Bumpin0000" x="0" y="0" width="1371" height="933" pivotX="751.4" pivotY="559.1" frameX="-81" frameY="-81" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0001" x="1371" y="0" width="1361" height="925" frameX="-86" frameY="-85" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0002" x="2732" y="0" width="1343" height="909" frameX="-95" frameY="-93" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0003" x="4075" y="0" width="1313" height="883" frameX="-110" frameY="-106" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0004" x="5388" y="0" width="1273" height="848" frameX="-130" frameY="-124" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0005" x="6661" y="0" width="1221" height="803" frameX="-156" frameY="-146" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0006" x="0" y="933" width="1161" height="752" frameX="-186" frameY="-172" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0007" x="1161" y="933" width="1097" height="697" frameX="-218" frameY="-199" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0008" x="2258" y="933" width="1039" height="646" frameX="-247" frameY="-225" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0009" x="3297" y="933" width="984" height="598" frameX="-273" frameY="-247" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0010" x="4281" y="933" width="984" height="598" frameX="-273" frameY="-247" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0011" x="5265" y="933" width="979" height="598" frameX="-277" frameY="-249" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0012" x="6244" y="933" width="955" height="586" frameX="-289" frameY="-255" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0013" x="7199" y="933" width="927" height="573" frameX="-303" frameY="-261" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0014" x="0" y="1685" width="905" height="562" frameX="-314" frameY="-267" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0015" x="905" y="1685" width="895" height="557" frameX="-319" frameY="-269" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0016" x="1800" y="1685" width="1533" height="1095"/>
+	<SubTexture name="Lenny Bumpin0017" x="3333" y="1685" width="1519" height="1083" frameX="-7" frameY="-6" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0018" x="4852" y="1685" width="1493" height="1059" frameX="-20" frameY="-18" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0019" x="6345" y="1685" width="1453" height="1023" frameX="-40" frameY="-36" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0020" x="0" y="2780" width="1395" height="970" frameX="-69" frameY="-63" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0021" x="1395" y="2780" width="1321" height="903" frameX="-106" frameY="-96" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0022" x="2716" y="2780" width="1235" height="826" frameX="-149" frameY="-135" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0023" x="3951" y="2780" width="1145" height="745" frameX="-194" frameY="-175" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0024" x="5096" y="2780" width="1061" height="668" frameX="-236" frameY="-214" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0025" x="6157" y="2780" width="984" height="598" frameX="-273" frameY="-247" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0026" x="7141" y="2780" width="984" height="598" frameX="-273" frameY="-247" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0027" x="0" y="3750" width="979" height="598" frameX="-277" frameY="-249" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0028" x="979" y="3750" width="955" height="586" frameX="-289" frameY="-255" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0029" x="1934" y="3750" width="925" height="571" frameX="-304" frameY="-262" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0030" x="2859" y="3750" width="901" height="558" frameX="-316" frameY="-269" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0031" x="3760" y="3750" width="893" height="555" frameX="-320" frameY="-270" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0032" x="4653" y="3750" width="893" height="555" frameX="-320" frameY="-270" frameWidth="1533" frameHeight="1095"/>
+	<SubTexture name="Lenny Bumpin0033" x="5546" y="3750" width="893" height="555" frameX="-320" frameY="-270" frameWidth="1533" frameHeight="1095"/>
+</TextureAtlas>
