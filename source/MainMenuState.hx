@@ -10,6 +10,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import io.newgrounds.NG;
 import lime.app.Application;
@@ -27,9 +28,9 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'discord', 'options'];
 	#else
-	var optionShit:Array<String> = ['story mode', 'freeplay'];
+	var optionShit:Array<String> = ['freeplay'];
 	#end
 
 	var newGaming:FlxText;
@@ -43,10 +44,6 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-		#if desktop
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
-		#end
 
 		if (!FlxG.sound.music.playing)
 		{
@@ -63,6 +60,7 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = true;
 		add(bg);
+		bg.angle = 180;
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
@@ -82,28 +80,68 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
-		var tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
+		
+
+		var tex = Paths.getSparrowAtlas('Lenny_main_menu_assets');
 
 		for (i in 0...optionShit.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
+			var menuItem:FlxSprite = new FlxSprite(0 +  (i * 160), 0 );
 			menuItem.frames = tex;
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
+			menuItem.animation.addByPrefix('enter', optionShit[i] + " enter", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			menuItem.scrollFactor.set();
 			menuItem.antialiasing = true;
+			menuItems.forEach(function(spr:FlxSprite)
+			{	
+				spr.visible = false;
+			});
 		}
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer + " FNF", 12);
+		var versionShit:FlxText = new FlxText(30, FlxG.height - 30, 0, gameVer + " FNF", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
+
+		var modNameMenu:FlxText = new FlxText(30, FlxG.height - 50, 0, "VS. Lenny", 12);
+		modNameMenu.scrollFactor.set();
+		modNameMenu.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(modNameMenu);
+
+		FlxG.camera.zoom = 5;
+		FlxTween.tween(bg, { angle:0}, 1, { 
+			ease: FlxEase.sineInOut
+		});
+		FlxTween.tween(FlxG.camera, { zoom: 1}, 1.1, { 
+			ease: FlxEase.sineInOut ,
+			onComplete: function(twn:FlxTween)
+			{
+				menuItems.forEach(function(spr:FlxSprite)
+				{	
+					spr.visible = true;
+					spr.animation.play('enter');
+					new FlxTimer().start(1, function(e:FlxTimer)
+					{
+						spr.animation.play('idle');
+						changeItem();
+					});
+				});
+			}
+		});
+		
+		/*FlxTween.tween(bg, { angle:0}, 1, { ease: FlxEase.quartInOut});
+		FlxTween.tween(spr, { x: 0, y: 50 }, 0.9, { ease: FlxEase.quartInOut});*/
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
 
 		// NG.core.calls.event.logEvent('swag').send();
 
@@ -113,7 +151,8 @@ class MainMenuState extends MusicBeatState
 		else
 			controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
 
-		changeItem();
+		changeItem(-1);
+		changeItem(1);
 
 		super.create();
 	}
@@ -148,12 +187,12 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == 'donate')
+				if (optionShit[curSelected] == 'discord')
 				{
 					#if linux
-					Sys.command('/usr/bin/xdg-open', ["https://ninja-muffin24.itch.io/funkin", "&"]);
+					Sys.command('/usr/bin/xdg-open', ["https://discord.gg/jh9UtFxFFV", "&"]);
 					#else
-					FlxG.openURL('https://ninja-muffin24.itch.io/funkin');
+					FlxG.openURL('https://discord.gg/jh9UtFxFFV');
 					#end
 				}
 				else
@@ -180,19 +219,60 @@ class MainMenuState extends MusicBeatState
 							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
 							{
 								var daChoice:String = optionShit[curSelected];
+								
 
 								switch (daChoice)
 								{
-									case 'story mode':
-										FlxG.switchState(new StoryMenuState());
-										trace("Story Menu Selected");
-									case 'freeplay':
-										FlxG.switchState(new FreeplayState());
+									case 'freeplay':	
+										FlxTween.tween(FlxG.camera, { x: 0, y: 50 }, 0.5, { 
+											ease: FlxEase.sineInOut,
+											onComplete: function(twn:FlxTween)
+											{
+												FlxTween.tween(FlxG.camera, { zoom: 5}, 1.5, { 
+													ease: FlxEase.sineInOut,
+													onComplete: function(twn:FlxTween)
+													{
+														FlxG.switchState(new FreeplayState());
+														
+														trace("Freeplay Menu Selected");
+													} 
+												});
 
-										trace("Freeplay Menu Selected");
+											}
+										});
+										
 
 									case 'options':
-										FlxG.switchState(new OptionsMenu());
+										FlxTween.tween(FlxG.camera, { x: 0, y: 100 }, 0.5, { 
+											ease: FlxEase.sineInOut,
+											onComplete: function(twn:FlxTween)
+											{
+												FlxTween.tween(FlxG.camera, { zoom: 5}, 1.5, { 
+													ease: FlxEase.sineInOut,
+													onComplete: function(twn:FlxTween)
+													{
+														FlxG.switchState(new OptionsMenu());
+													} 
+												});
+
+											}
+										});
+									case 'story mode':
+										FlxTween.tween(FlxG.camera, { x: 0, y: 200 }, 0.5, { 
+											ease: FlxEase.sineInOut,
+											onComplete: function(twn:FlxTween)
+											{
+												FlxTween.tween(FlxG.camera, { zoom: 5}, 1.5, { 
+													ease: FlxEase.sineInOut,
+													onComplete: function(twn:FlxTween)
+													{
+														FlxG.switchState(new StoryMenuState());
+													} 
+												});
+												
+												
+											}
+										});
 								}
 							});
 						}
@@ -205,7 +285,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			spr.screenCenter(X);
+			spr.screenCenter(y);
 		});
 	}
 

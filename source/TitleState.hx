@@ -40,6 +40,9 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
+	var simpBG:FlxSprite;
+	var lennyGradient:FlxSprite;
+	var logoBlEnter:FlxSprite;
 
 	var curWacky:Array<String> = [];
 
@@ -151,14 +154,32 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(-150, -100);
-		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+		var simpBG:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('simpBG'));
+		simpBG.scrollFactor.x = 0;
+		simpBG.scrollFactor.y = 0.18;
+		simpBG.setGraphicSize(Std.int(bg.width * 1.1));
+		simpBG.updateHitbox();
+		simpBG.screenCenter();
+		simpBG.antialiasing = true;
+		add(simpBG);
+
+
+
+		logoBl = new FlxSprite(-50, -160);
+		logoBl.frames = Paths.getSparrowAtlas('lennyLogoBumpin');
 		logoBl.antialiasing = true;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
+		logoBl.animation.addByPrefix('bump', 'Lenny Bumpin', 30);
 		logoBl.animation.play('bump');
 		logoBl.updateHitbox();
-		// logoBl.screenCenter();
-		// logoBl.color = FlxColor.BLACK;
+		
+		logoBlEnter = new FlxSprite(-550, -1200);
+		logoBlEnter.frames = Paths.getSparrowAtlas('lennyLogoEnter');
+		logoBlEnter.antialiasing = true;
+		logoBlEnter.animation.addByPrefix('bump', 'Lenny Logo Enter', 30);
+		logoBlEnter.updateHitbox();
+		logoBlEnter.visible = false;
+		// logoBlEnter.screenCenter();
+		// logoBlEnter.color = FlxColor.BLACK;
 
 		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
 		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
@@ -166,6 +187,7 @@ class TitleState extends MusicBeatState
 		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		gfDance.antialiasing = true;
 		add(gfDance);
+		gfDance.visible = false;
 		add(logoBl);
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);
@@ -177,6 +199,7 @@ class TitleState extends MusicBeatState
 		titleText.updateHitbox();
 		// titleText.screenCenter(X);
 		add(titleText);
+		titleText.visible = false;
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
@@ -192,6 +215,18 @@ class TitleState extends MusicBeatState
 
 		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		credGroup.add(blackScreen);
+
+		lennyGradient = new FlxSprite(-120, -300);
+		lennyGradient.frames = Paths.getSparrowAtlas('lennyIntroGradient');
+		lennyGradient.antialiasing = true;
+		lennyGradient.animation.addByPrefix('hehe', 'Lenny Intro Gradient', 30);
+		lennyGradient.animation.play('hehe');
+		lennyGradient.updateHitbox();
+		lennyGradient.alpha = 0;
+		credGroup.add(lennyGradient);
+		FlxTween.tween(lennyGradient, {alpha: 0.15}, 1, {
+			ease: FlxEase.sineInOut,
+		});
 
 		credTextShit = new Alphabet(0, 0, "ninjamuffin99\nPhantomArcade\nkawaisprite\nevilsk8er", true);
 		credTextShit.screenCenter();
@@ -222,14 +257,14 @@ class TitleState extends MusicBeatState
 
 	function getIntroTextShit():Array<Array<String>>
 	{
-		var fullText:String = Assets.getText(Paths.txt('introText'));
+		var fullText:String = Assets.getText(Paths.txt('lennyIntroText'));
 
 		var firstArray:Array<String> = fullText.split('\n');
 		var swagGoodArray:Array<Array<String>> = [];
 
 		for (i in firstArray)
 		{
-			swagGoodArray.push(i.split('--'));
+			swagGoodArray.push(i.split(', '));
 		}
 
 		return swagGoodArray;
@@ -283,10 +318,19 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 1);
 			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
+			remove(logoBl);
+			add(logoBlEnter);
+			logoBlEnter.visible = true;
+			logoBlEnter.animation.play('bump');
+			new FlxTimer().start(1, function(tmr:FlxTimer)
+			{
+				FlxTween.tween(FlxG.camera, { zoom: 5}, 1.5, { ease: FlxEase.sineInOut });
+			});
+
 			transitioning = true;
 			// FlxG.sound.music.stop();
 
-			new FlxTimer().start(2, function(tmr:FlxTimer)
+			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				FlxG.switchState(new MainMenuState());
 			});
@@ -306,8 +350,8 @@ class TitleState extends MusicBeatState
 		for (i in 0...textArray.length)
 		{
 			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
-			money.screenCenter(X);
-			money.y += (i * 60) + 200;
+			money.y = 1500;
+			FlxTween.quadMotion(money, 100, -100, 30+ (i*70), 150+ (i*130), 100, 80 + (i*130), 0.4, true, {ease: FlxEase.sineInOut});
 			credGroup.add(money);
 			textGroup.add(money);
 		}
@@ -316,11 +360,12 @@ class TitleState extends MusicBeatState
 	function addMoreText(text:String)
 	{
 		var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
-		coolText.screenCenter(X);
-		coolText.y += (textGroup.length * 60) + 200;
+		coolText.y = -1500;
+		FlxTween.quadMotion(coolText, 100, -100, 10+ (textGroup.length*40), 150+ (textGroup.length*130), 100, 80 + (textGroup.length*130), 0.4, true, {ease: FlxEase.sineInOut});
 		credGroup.add(coolText);
 		textGroup.add(coolText);
 	}
+
 
 	function deleteCoolText()
 	{
@@ -385,13 +430,13 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday');
+				addMoreText('FNF');
 			// credTextShit.visible = true;
 			case 14:
-				addMoreText('Night');
+				addMoreText('VS.');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Funkin');
+				addMoreText('Lenny');
 			case 16:
 				skipIntro();
 		}
@@ -407,7 +452,10 @@ class TitleState extends MusicBeatState
 
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
+			remove(lennyGradient);
 			skippedIntro = true;
+			credGroup.remove(blackScreen);
+			add(simpBG);
 		}
 	}
 }
