@@ -93,7 +93,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.addByPrefix('enter', optionShit[i] + " enter", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
+			menuItem.screenCenter(Y);
 			menuItems.add(menuItem);
 			menuItem.scrollFactor.set();
 			menuItem.antialiasing = true;
